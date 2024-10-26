@@ -1,0 +1,105 @@
+---
+title: "statistica"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
+
+```{r}
+produto <- c(9,8,7,5,9,6,4,8,7,3,9,10)
+atendimento <-c(8,6,7,9,8,8,7,9,4,3,10,8)
+
+```
+
+```{r}
+mean(produto)
+mean(atendimento)
+
+```
+
+```{r}
+median(produto)
+median(atendimento)
+
+```
+
+```{r}
+sd(produto)
+sd(atendimento)
+
+```
+
+```{r}
+var (produto)
+var (atendimento)
+
+cor(produto,atendimento)
+
+ 
+```
+
+```{r}
+plot(produto,atendimento, main="Grafico de Dispersão: Produto vc Atendimento", xlab="Produto",ylab="Atendimento",pch=8,col="blue")
+
+```
+
+```{r}
+modelo<- lm(produto~atendimento)
+```
+
+```{r}
+install.packages("DescTools")
+```
+
+```{r}
+library("DescTools")
+```
+
+```{r}
+calcula_estatistica<-function(variavel){
+  estatistica<- list(
+    media=mean(variavel),
+ 
+    mediana=median(variavel),
+    moda=Mode(variavel),
+    variancia=var(variavel),
+    desviopadrao=sd(variavel),
+    quartis=quantile(variavel)
+    
+  )
+  
+  return (estatistica)
+}
+```
+
+```{r}
+estatistica_produto<-calcula_estatistica(produto)
+cat("Estatistica descritiva para a variavel produto:\n")
+print(estatistica_produto)
+```
+
+```{r}
+estatistica_atendimento<-calcula_estatistica(atendimento)
+cat("Estatistica descritiva para a variavel atendimento:\n")
+print(estatistica_atendimento)
+```
