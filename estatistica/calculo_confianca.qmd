@@ -1,0 +1,63 @@
+---
+title: "Untitled"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
+
+```{r}
+n<- 100
+media<- 65.5
+devio_padrao<- 4.8
+nivel_confianca<- 0.95
+```
+
+```{r}
+erro_padrao<- devio_padrao/sqrt(n)
+```
+
+```{r}
+# valor critico 2* para 95% de confiança
+z_critico<- qnorm(1-(1-nivel_confianca)/2)
+
+```
+
+```{r}
+# calcular o intervalo de confiança
+margem_erro <- z_critico * erro_padrao
+intervalo_conf <- c(media-margem_erro, media+margem_erro)
+```
+
+```{r}
+# Exibir os resultados
+cat("Média da amostra: ",media,"kg\n")
+cat("Devio padrao da amostra: ",devio_padrao,"kg\n")
+cat("Erro padrão da média: ",round(erro_padrao,2),"kg\n")
+cat("Valor critico: ",round(z_critico,2),"kg\n")
+cat("Margem de rro: ", round(margem_erro,2),"kg\n")
+cat("Intervalo de confianca de 95%", round(intervalo_conf[1],2),"kg\n")
+```
+
+```{r}
+
+```
